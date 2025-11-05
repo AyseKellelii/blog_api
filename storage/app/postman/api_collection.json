@@ -1,0 +1,592 @@
+{
+	"info": {
+		"_postman_id": "a6040a30-673a-430a-84ea-ce80a7004870",
+		"name": "Blog_api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48324568",
+		"_collection_link": "https://ayseekelleli-3752352.postman.co/workspace/Ayse's-Team's-Workspace~e128288a-b6f4-4af8-8a8a-e85453ba8321/collection/48324568-a6040a30-673a-430a-84ea-ce80a7004870?action=share&source=collection_link&creator=48324568"
+	},
+	"item": [
+		{
+			"name": "Regiser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"name\": \"Sevgi\",\r\n  \"surname\": \"Basceken\",\r\n  \"email\": \"sevgi@gmail.com\",\r\n  \"password\": \"123456\",\r\n  \"password_confirmation\": \"123456\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://blog.com/api/register",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login_post",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Login yanıtından token'ı çek ve environment değişkenine kaydet\r",
+							"const response = pm.response.json();\r",
+							"\r",
+							"if (response.token) {\r",
+							"    pm.environment.set(\"token\", response.token);\r",
+							"    console.log(\"Token kaydedildi:\", response.token);\r",
+							"} else if (response.data && response.data.token) {\r",
+							"    pm.environment.set(\"token\", response.data.token);\r",
+							"    console.log(\" Token kaydedildi (data içinde):\", response.data.token);\r",
+							"} else {\r",
+							"    console.warn(\" Token bulunamadı, yanıt formatını kontrol et.\");\r",
+							"}\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {},
+						"requests": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ayse@example.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://blog.com/api/login",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://blog.com/api/logout",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category_create",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \"name\": \"içecek\" }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://blog.com/api/categories",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category_update",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Seyahat\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://blog.com/api/categories/seyahatt",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories",
+						"seyahatt"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "category_delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"egitiöm\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://blog.com/api/categories/icecek",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"categories",
+						"icecek"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_create",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "category_name",
+							"value": "Seyahat",
+							"type": "text"
+						},
+						{
+							"key": "title",
+							"value": "laravell deneme post",
+							"type": "text"
+						},
+						{
+							"key": "content",
+							"value": "laravelle deneme postt",
+							"type": "text"
+						},
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/Ayse/Downloads/LARAVEL BLOG.docx"
+						},
+						{
+							"key": "tags[]",
+							"value": "larvel",
+							"type": "text"
+						},
+						{
+							"key": "tags[]",
+							"value": "deneme",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://blog.com/api/posts",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_update",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"category_name\": \"Seyahat\",\r\n    \"title\": \"laravel deneme post\",\r\n    \"content\": \"Yeni laravelpost denemesi\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://blog.com/api/posts/laravell-deneme-post",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts",
+						"laravell-deneme-post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_delete",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://blog.com/api/posts/laravel-deneme-post",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts",
+						"laravel-deneme-post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_filter",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://blog.com/api/user/erdem",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"user",
+						"erdem"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_search",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://blog.com/api/posts?search=laravel",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "laravel"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_private",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "20|QGUb3KqpR6oXKq32t5HzykwL1vgu9ibZ4iVneVDF9e61d1f3",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "multipart/form-data",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://blog.com/api/posts/ddghfj",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts",
+						"ddghfj"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "post_date",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://blog.com/api/posts?start_date=2025-11-04&end_date=2025-11-05",
+					"protocol": "http",
+					"host": [
+						"blog",
+						"com"
+					],
+					"path": [
+						"api",
+						"posts"
+					],
+					"query": [
+						{
+							"key": "start_date",
+							"value": "2025-11-04"
+						},
+						{
+							"key": "end_date",
+							"value": "2025-11-05"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
