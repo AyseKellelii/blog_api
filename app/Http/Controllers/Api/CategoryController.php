@@ -46,7 +46,14 @@ class CategoryController extends Controller
 
     public function show(Request $request, Category $category)
     {
-        $this->authorize('show', $category);
+        if ($category->user_id !== $request->user()->id) {
+            return response()->json([
+                'errors' => [
+                    'status' => 403,
+                    'title' => 'Bu kategoriye erişim izniniz yok.'
+                ]
+            ], 403);
+        }
 
         return response()->json([
             'data' => [
