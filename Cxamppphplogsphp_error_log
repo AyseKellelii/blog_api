@@ -1,0 +1,14 @@
+[03-Nov-2025 07:48:53 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pcntl' (tried: C:/xampp/php8.2/ext\pcntl (Belirtilen modül bulunamadı), C:/xampp/php8.2/ext\php_pcntl.dll (Belirtilen modül bulunamadı)) in Unknown on line 0
+[03-Nov-2025 07:48:53 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 07:52:04 UTC] PHP Warning:  PHP Startup: Unable to load dynamic library 'pcntl' (tried: C:/xampp/php8.2/ext\pcntl (Belirtilen modül bulunamadı), C:/xampp/php8.2/ext\php_pcntl.dll (Belirtilen modül bulunamadı)) in Unknown on line 0
+[03-Nov-2025 07:52:04 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 07:53:36 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 07:57:56 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 08:05:31 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 08:05:31 UTC] PHP Warning:  Module "zip" is already loaded in Unknown on line 0
+[03-Nov-2025 08:07:16 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 08:10:42 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 08:12:14 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 08:13:22 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 08:14:36 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
+[03-Nov-2025 08:16:05 UTC] PHP Warning:  Module "openssl" is already loaded in Unknown on line 0
