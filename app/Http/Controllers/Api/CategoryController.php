@@ -46,7 +46,7 @@ class CategoryController extends Controller
 
     public function show(Request $request, Category $category)
     {
-        if ($category->user_id !== $request->user()->slug) {
+        if ($category->user_id !== $request->user()->id) {
             return response()->json([
                 'errors' => [
                     'status' => 403,
